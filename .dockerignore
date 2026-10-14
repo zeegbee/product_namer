@@ -1,0 +1,18 @@
+# В образ попадает только код приложения и requirements.txt
+.env
+.env.*
+.venv/
+venv/
+.git/
+.gitignore
+__pycache__/
+*.py[cod]
+.pytest_cache/
+logs/
+tests/
+*.md
+Dockerfile
+docker-compose.yml
+.dockerignore
+requirements-dev.txt
+pytest.ini

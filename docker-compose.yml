@@ -1,0 +1,29 @@
+services:
+  product-namer:
+    build: .
+    image: product-namer:latest
+    container_name: product-namer
+    env_file:
+      - .env
+    environment:
+      # Путь к логу внутри контейнера фиксирован: каталог смонтирован как volume.
+      LOG_FILE: /app/logs/app.log
+    ports:
+      - "8000:8000"
+    volumes:
+      - product_namer_logs:/app/logs
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4).status == 200 else 1)"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+
+volumes:
+  product_namer_logs:

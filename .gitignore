@@ -1,0 +1,31 @@
+# Секреты
+.env
+.env.*
+!.env.example
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Логи (каталог сохраняется через .gitkeep)
+logs/*
+!logs/.gitkeep
+*.log
+
+# Временные файлы и IDE
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
